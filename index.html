@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A magical birthday journey made with love ❤️">
+  <title>Happy Birthday 🎂✨</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Particles Canvas -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- Music Toggle -->
+<button class="music-toggle" id="musicToggle" title="Toggle Music">🔇</button>
+
+<!-- ============ SCENE 1: CONFIRMATION ============ -->
+<div class="scene active" id="scene1">
+  <div class="scene1-stars" id="scene1Stars"></div>
+  <div class="cat-container" id="cat1Container" style="width: clamp(250px, 60vw, 450px); margin-top: -30px; margin-bottom: 20px; animation: floatText 4s ease-in-out infinite;">
+    <img src="gun cat.png" id="catHappy1" alt="gun Cat" style="width: 100%; height: auto; object-fit: contain;">
+    <img src="sad cat.png" id="catAngry1" alt="Sad Cat" style="display:none; width: 100%; height: auto; object-fit: contain;">
+  </div>
+  <h1 class="heading" id="scene1Heading">This site is for someone special ✨</h1>
+  <p class="subtext" id="scene1Sub">So... are you that special someone?</p>
+  <div class="btn-group" id="scene1Btns">
+    <button class="btn btn-primary" onclick="scene1Yes()">YES!! ❤️</button>
+    <button class="btn btn-secondary" onclick="scene1No()">NO...? 🙈</button>
+  </div>
+</div>
+
+<!-- ============ SCENE 2: BIRTHDAY WELCOME ============ -->
+<div class="scene" id="scene2">
+  <div id="scene2Balloons"></div>
+  <div class="cat-container" id="cat2Container" style="width: clamp(250px, 60vw, 450px); margin-top: -50px; margin-bottom: -20px;">
+    <img src="cat.png" id="catHappy2" alt="Cute Cat" style="width: 100%; height: auto; object-fit: contain; animation: floatText 3s ease-in-out infinite;">
+    <img src="sad cat2.png" id="catSad2" alt="Sad Cat" style="display:none; width: 100%; height: auto; object-fit: contain;">
+  </div>
+  <h1 class="special-birthday-text" id="scene2Heading">HAPPY BIRTHDAY ❤️</h1>
+  <p class="subtext" id="scene2Sub">Are you excited for what's next?</p>
+  <div class="btn-group" id="scene2Btns">
+    <button class="btn btn-primary" onclick="scene2Yes()">YES!! ❤️</button>
+    <button class="btn btn-secondary" onclick="scene2No()">NO...? 🙈</button>
+  </div>
+</div>
+
+<!-- ============ SCENE 3: BLOW THE CANDLE ============ -->
+<div class="scene" id="scene3">
+  <div class="aurora-bg"></div>
+  <div class="twinkle-stars" id="scene3Stars"></div>
+
+  <div id="interactiveOrbs"></div>
+
+  <div class="cinematic-text-container" id="scene3Text">
+    <h1 class="cinematic-title">Make a Wish</h1>
+    <p class="cinematic-subtitle">Close your eyes and let the magic happen...</p>
+  </div>
+    
+  <div class="elegant-cake-container dynamic-cake" id="cakeContainer">
+    <svg viewBox="0 0 200 200" class="elegant-cake-svg">
+      <defs>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <linearGradient id="cakePlate" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="100%" stop-color="#aaaaaa"/>
+        </linearGradient>
+        <linearGradient id="cakeTierBottom" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#ffb6c1"/>
+          <stop offset="40%" stop-color="#ff9a9e"/>
+          <stop offset="100%" stop-color="#ffb6c1"/>
+        </linearGradient>
+        <linearGradient id="cakeTierTop" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#ffe66d"/>
+          <stop offset="40%" stop-color="#f6d365"/>
+          <stop offset="100%" stop-color="#ffe66d"/>
+        </linearGradient>
+        <linearGradient id="icingGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="100%" stop-color="#f0f0f0"/>
+        </linearGradient>
+        <linearGradient id="candleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="50%" stop-color="#eeeeee"/>
+          <stop offset="100%" stop-color="#cccccc"/>
+        </linearGradient>
+      </defs>
+      <!-- plate -->
+      <ellipse cx="100" cy="180" rx="85" ry="18" fill="url(#cakePlate)" opacity="0.3" />
+      <ellipse cx="100" cy="175" rx="75" ry="12" fill="url(#cakePlate)" opacity="0.5" />
+      <!-- bottom tier -->
+      <path d="M35,165 Q35,175 100,175 Q165,175 165,165 L165,115 Q165,125 100,125 Q35,125 35,115 Z" fill="url(#cakeTierBottom)"/>
+      <!-- top tier -->
+      <path d="M55,125 Q55,135 100,135 Q145,135 145,125 L145,75 Q145,85 100,85 Q55,85 55,75 Z" fill="url(#cakeTierTop)"/>
+      <!-- icing top -->
+      <path d="M55,75 Q55,65 100,65 Q145,65 145,75 Q145,85 135,85 Q125,95 115,85 Q110,100 100,85 Q90,95 85,85 Q75,95 65,85 Q55,85 55,75" fill="url(#icingGrad)" filter="url(#glow)"/>
+      <!-- icing bottom -->
+      <path d="M35,115 Q35,105 100,105 Q165,105 165,115 Q165,125 155,125 Q145,140 135,125 Q125,135 115,125 Q105,145 100,125 Q90,140 85,125 Q75,135 65,125 Q55,145 45,125 Q35,125 35,115" fill="url(#icingGrad)" filter="url(#glow)"/>
+      <!-- sprinkles -->
+      <rect x="70" y="145" width="6" height="3" fill="#ff6b6b" transform="rotate(30 70 145)"/>
+      <rect x="100" y="155" width="6" height="3" fill="#4ecdc4" transform="rotate(-20 100 155)"/>
+      <rect x="130" y="140" width="6" height="3" fill="#8d6e63" transform="rotate(45 130 140)"/>
+      <rect x="80" y="105" width="6" height="3" fill="#ff6b6b" transform="rotate(-40 80 105)"/>
+      <rect x="110" y="115" width="6" height="3" fill="#4ecdc4" transform="rotate(15 110 115)"/>
+      <!-- candles -->
+      <rect x="75" y="40" width="6" height="35" fill="url(#candleGrad)" rx="2"/>
+      <rect x="97" y="30" width="6" height="45" fill="url(#candleGrad)" rx="2"/>
+      <rect x="119" y="40" width="6" height="35" fill="url(#candleGrad)" rx="2"/>
+      <!-- wicks -->
+      <line x1="78" y1="40" x2="78" y2="35" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="100" y1="30" x2="100" y2="25" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="122" y1="40" x2="122" y2="35" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- stripes -->
+      <path d="M75,45 L81,50 M75,55 L81,60 M75,65 L81,70" stroke="#ff6b6b" stroke-width="2"/>
+      <path d="M97,35 L103,40 M97,45 L103,50 M97,55 L103,60 M97,65 L103,70" stroke="#4ecdc4" stroke-width="2"/>
+      <path d="M119,45 L125,50 M119,55 L125,60 M119,65 L125,70" stroke="#ffb6c1" stroke-width="2"/>
+    </svg>
+    
+    <!-- Flames -->
+    <div class="candle-flame-wrapper flame-left" id="flame1">
+      <div class="candle-flame-core"></div>
+      <div class="candle-flame-halo"></div>
+      <div class="candle-smoke"></div>
+    </div>
+    <div class="candle-flame-wrapper flame-center" id="flame2">
+      <div class="candle-flame-core"></div>
+      <div class="candle-flame-halo"></div>
+      <div class="candle-smoke"></div>
+    </div>
+    <div class="candle-flame-wrapper flame-right" id="flame3">
+      <div class="candle-flame-core"></div>
+      <div class="candle-flame-halo"></div>
+      <div class="candle-smoke"></div>
+    </div>
+  </div>
+  
+  <button class="btn glass-btn glowing-btn" id="blowBtn" onclick="blowCandle()">🌬️ Blow the candles</button>
+  <div class="shockwave" id="shockwave"></div>
+  
+  <div class="wish-success-screen" id="wishSuccessScreen" style="display:none;">
+    <div class="shooting-star" id="shootingStar"></div>
+    <div class="success-text-container">
+      <h2 class="elegant-success">Your wish is floating to the stars ✨</h2>
+      <p class="success-subtext">May all your dreams come true...</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SCENE 4: ENVELOPE ============ -->
+<div class="scene" id="scene4">
+  <div class="s4-bg"></div>
+  
+  <!-- Phase 1: Envelope view -->
+  <div id="scene4Phase1">
+    <div class="s4-tag">💗 MADE FOR YOUUUU!</div>
+    <h1 class="s4-hello">Hello Cutieee</h1>
+    <p class="s4-happy">happy birthday ♡</p>
+    
+    <!-- Rose decorations -->
+    <div class="s4-rose s4-rose-tl">🌸</div>
+    <div class="s4-rose s4-rose-tr">🌸</div>
+    <div class="s4-rose s4-rose-br">🌸</div>
+    
+    <!-- Realistic Envelope -->
+    <div class="s4-envelope-wrap" id="envelopeContainer" onclick="openEnvelope()">
+      <div class="s4-env-shadow"></div>
+      <div class="s4-envelope" id="envelopeBody">
+        <!-- Back flap (sits behind) -->
+        <div class="s4-flap-back"></div>
+        
+        <!-- Dummy letter that slides up -->
+        <div class="s4-letter-dummy" id="letterInside">
+           <div class="s4-dummy-line"></div>
+           <div class="s4-dummy-line"></div>
+           <div class="s4-dummy-line short"></div>
+        </div>
+
+        <!-- Envelope body -->
+        <div class="s4-env-body">
+          <div class="s4-tri-left"></div>
+          <div class="s4-tri-right"></div>
+          <div class="s4-tri-bottom"></div>
+          <div class="s4-heart-seal">♡</div>
+          <div class="s4-stamp-lines">
+            <div></div><div></div><div></div>
+          </div>
+        </div>
+        <!-- Top flap (opens) -->
+        <div class="s4-flap-top" id="envelopeFlap">
+          <div class="s4-flap-shadow"></div>
+        </div>
+      </div>
+    </div>
+    <p class="s4-tap-hint" id="s4TapHint">tap the envelope to open 💌</p>
+  </div>
+  
+  <!-- Phase 2: Letter card full screen overlay -->
+  <div class="s4-letter-card" id="letterContainer">
+    <div class="s4-card-rose left">🌸</div>
+    <div class="s4-card-rose right">🌸</div>
+    <div class="s4-avatar">
+      <img src="cat.png" alt="cute cat" class="s4-avatar-img"/>
+    </div>
+    <div class="s4-card-tag">💗 HEHEEEE</div>
+    <h2 class="s4-card-title">Happy Birthday</h2>
+    <p class="s4-card-sub">My Dear ♡</p>
+    <div class="s4-divider">
+      <span></span><span class="s4-div-star">✿</span><span></span>
+    </div>
+    <div class="s4-message" id="letterText"></div>
+    <div class="s4-continue-wrap">
+      <button class="btn s4-continue-btn" id="scene4Continue" style="display:none" onclick="goToScene('scene5')">SEE WHAT'S NEXT →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SCENE 5: BIRTHDAY PUZZLE ============ -->
+<div class="scene" id="scene5">
+  <h1 class="heading">Birthday Puzzle 🧩</h1>
+  <p class="subtext" id="puzzleHint">Solve this to reveal your surprise! Tap two pieces to swap them.</p>
+  
+  <div class="puzzle-controls" style="margin-top:15px; margin-bottom: 15px;">
+    <!-- Hidden file input -->
+    <input type="file" id="puzzleUpload" accept="image/*" style="display:none;" onchange="handlePuzzleUpload(event)">
+    <button class="btn btn-secondary" onclick="document.getElementById('puzzleUpload').click()">Upload Your Image 🖼️</button>
+  </div>
+
+  <div class="puzzle-board" id="puzzleBoard">
+    <!-- 9 pieces generated by JS -->
+  </div>
+
+  <div id="puzzleSuccess" style="display:none; text-align:center; margin-top: 20px;">
+    <h2 style="font-family:'Dancing Script', cursive; font-size:2rem; color:#3a1050;">Yay! You did it! 🎉</h2>
+    <button class="btn btn-primary" onclick="goToScene('sceneFlower')" style="margin-top:15px">Next Surprise ✨</button>
+  </div>
+</div>
+
+<!-- ============ SCENE FLOWER: VIRTUAL HAND GESTURE ============ -->
+<div class="scene" id="sceneFlower" style="padding:0; overflow:hidden; background: #000;">
+  <div class="flower-container" style="position:relative; width: 100vw; height: 100vh; overflow: hidden; background: #000;">
+    <!-- Webcam feed -->
+    <video id="webcam" autoplay playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); z-index: 1;"></video>
+    <!-- Canvas overlay for rendering flower + hand skeleton -->
+    <canvas id="canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform: scaleX(-1); z-index: 2; pointer-events: none;"></canvas>
+    <!-- Subtle vignette -->
+    <div class="vignette" style="position: absolute; inset: 0; z-index: 3; pointer-events: none; background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.4) 100%);"></div>
+    <!-- Loading screen -->
+    <div class="loading-overlay" id="loading">
+      <div class="loading-flower"></div>
+      <div class="loading-text">Initializing Hand Tracking</div>
+      <div class="loading-subtext">Please allow camera access</div>
+    </div>
+    <!-- Instructions -->
+    <div class="instructions" id="instructions">
+      <span>Left hand pinch</span> controls Bloom &nbsp;·&nbsp;
+      <span>Right hand pinch</span> controls Growth<br>
+      <span>Sway hands</span> to create wind
+    </div>
+    <button class="btn btn-primary bounce-in" onclick="goToScene('scene6')" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 20;">Next Surprise 🎁</button>
+  </div>
+</div>
+
+<!-- ============ SCENE 6: THE GIFT ============ -->
+<div class="scene" id="scene6">
+  <h1 class="heading">A gift for you 🎁</h1>
+  <p class="subtext">Careful... It's fragile. It contains lots of love ❤️</p>
+  <div class="gift-container" id="giftContainer" onclick="openGift()">
+    <div class="gift-bow">🎀</div>
+    <div class="gift-lid"></div>
+    <div class="gift-box">
+      <div class="gift-ribbon-v"></div>
+      <div class="gift-ribbon-h"></div>
+    </div>
+  </div>
+  <div class="gift-surprise" id="giftSurprise">
+    <div style="font-size:60px; margin:10px">🎉🥳🎊</div>
+    <p class="gift-surprise-text">You are the most precious gift to everyone who knows you! 💝</p>
+    <button class="btn btn-primary" onclick="goToScene('sceneFinal')" style="margin-top:20px">Continue ✨</button>
+  </div>
+</div>
+
+
+
+<!-- ============ FINAL SCENE ============ -->
+<div class="scene" id="sceneFinal">
+  <div class="moon">🌙</div>
+  <div id="starsContainer"></div>
+  <div id="firefliesContainer"></div>
+  <div class="final-text" id="finalText" style="z-index:5; position:relative;">
+    <p>Thank you for spending a few minutes with me ❤️</p>
+    <br>
+    <p>Again Happiest Birthday to you 🎀</p>
+    <br>
+    <p>I hope today becomes one of your happiest memories. ✨</p>
+  </div>
+  <button class="btn btn-primary" onclick="replayAll()" style="margin-top:30px; z-index:5; position:relative;">
+    🔄 Replay Everything
+  </button>
+</div>
+
+<!-- Background Music (royalty free happy tune placeholder) -->
+<audio id="bgMusic" loop preload="none">
+  <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-music-box-907.mp3" type="audio/mpeg">
+</audio>
+<audio id="sfxPop" preload="none">
+  <source src="https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4/hands.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3/camera_utils.js" crossorigin="anonymous"></script>
+<script src="RedBloom-main/app.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
