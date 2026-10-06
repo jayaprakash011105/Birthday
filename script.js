@@ -406,7 +406,7 @@ function openEnvelope() {
 }
 
 function typewriterEffect() {
-  const text = `Today is yours.You are seen,you are heard,you matter a lot. I know u r matured & strong enough to handle things , just leave the hard stuffs that u gothrough dont overthink it , just be happy and even strong hearts needs rest too.....You dont have to be strong with me ,Shakey hands are welcomed here.Unknowingly u makes me happy After a long long time I have been started to smile for a text & thats urs , ur notifications make me happy everyday.Everything is better with u nahhh Everything is better since u..Thank You lucky charm💗.\n\nHAPPYYYYY BIRTHDAYYYYY CUTIEEEEE 🎂💕`;
+  const text = `Today is yours.You are seen,you are heard,and valued every single day. I know u r matured & strong enough to handle things , just leave the hard stuffs that u gothrough dont overthink , just be happy and even strong hearts needs rest too.....You dont have to be strong with me ,shakey hands are welcomed here. I have no reasons to leave you or loosing u And what ever happens i will always be here for you. And remember u are not my option You are my Answer.\n\nHAPPYYYYY BIRTHDAYYYYY RAMYA 🎂💕`;
   const container = document.getElementById('letterText');
   container.innerHTML = '';
   let i = 0;
